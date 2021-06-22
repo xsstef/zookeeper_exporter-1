@@ -145,7 +145,7 @@ func (c *zookeeperCollector) Collect(ch chan<- prometheus.Metric) {
 	data, ok := sendZkCommand("mntr")
 
 	if !ok {
-		log.Error("Failed to fetch metrics")
+		log.Fatal("Failed to fetch metrics")
 		ch <- prometheus.MustNewConstMetric(c.upIndicator, prometheus.GaugeValue, 0)
 		return
 	}
